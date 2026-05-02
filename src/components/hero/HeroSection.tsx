@@ -134,12 +134,11 @@ export function HeroSection() {
           transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           style={{ color: "var(--text-primary)", marginBottom: "1.5rem" }}
         >
-          Hi, I&apos;m{" "}
-          <span className="gradient-text">Karan Srinivas</span>
+          <span className="gradient-text">Software Engineer</span>
           <br />
-          I build AI systems
+          who ships scalable
           <br />
-          that actually ship.
+          systems at speed.
         </motion.h1>
 
         {/* Subtitle */}
@@ -154,10 +153,10 @@ export function HeroSection() {
             marginBottom: "2.5rem",
           }}
         >
-          Software Engineer specializing in agentic AI pipelines, cloud
-          infrastructure, and full-stack development. From concept to production
-          — I ship systems that handle millions of queries and serve thousands
-          of users.
+          Hi, I&apos;m <strong style={{ color: "var(--text-primary)", fontWeight: 700 }}>Karan Srinivas</strong> — a full-stack software engineer
+          with 4+ years building production systems across AI pipelines, cloud
+          infrastructure, payments, and mobile. I turn complex problems into
+          clean, reliable software.
         </motion.p>
 
         {/* CTAs */}
