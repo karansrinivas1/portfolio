@@ -4,8 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, ExternalLink, Github, Mail, Sparkles } from "lucide-react";
 
-const RESEARCH_PAPER_URL =
-  "https://ieeexplore.ieee.org/search/searchresult.jsp?queryText=Demand+Forecasting+Route+Optimization+Supply+Chain+Karan+Srinivas";
+const RESEARCH_PAPER_URL = "https://ieeexplore.ieee.org/document/9544942/";
 
 const STATS = [
   { value: 3.8, suffix: "", label: "GPA · Northeastern", decimal: true },
