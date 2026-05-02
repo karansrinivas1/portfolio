@@ -91,7 +91,7 @@ export function JourneySection() {
   return (
     <section
       id="experience"
-      style={{ padding: "7rem 0" }}
+      className="section-pad"
     >
       <div className="section-container">
         {/* Header */}

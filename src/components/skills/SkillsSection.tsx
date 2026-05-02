@@ -45,10 +45,8 @@ export function SkillsSection() {
   return (
     <section
       id="skills"
-      style={{
-        padding: "7rem 0",
-        borderTop: "1px solid var(--bg-border)",
-      }}
+      className="section-pad"
+      style={{ borderTop: "1px solid var(--bg-border)" }}
     >
       <div className="section-container">
         {/* Header */}
@@ -75,9 +73,10 @@ export function SkillsSection() {
 
         {/* Grid */}
         <div
+          className="skills-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
             gap: "1.25rem",
           }}
         >

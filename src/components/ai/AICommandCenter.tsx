@@ -126,6 +126,7 @@ export function AICommandCenter({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.97 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="ai-chat-panel"
             style={{
               position: "fixed",
               bottom: 88,
@@ -611,6 +612,7 @@ export function AICommandCenter({
       {/* ── Floating button ── */}
       <motion.button
         onClick={toggle}
+        className="ai-fab"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.92 }}
         animate={

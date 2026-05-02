@@ -17,7 +17,8 @@ export function EducationSection() {
   return (
     <section
       id="education"
-      style={{ padding: "7rem 0", borderTop: "1px solid var(--bg-border)" }}
+      className="section-pad"
+      style={{ borderTop: "1px solid var(--bg-border)" }}
     >
       <div className="section-container">
         <motion.div

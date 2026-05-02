@@ -78,8 +78,8 @@ export function Navigation() {
 
           {/* Desktop links */}
           <div
-            className="hidden md:flex"
-            style={{ display: "flex", alignItems: "center", gap: "1.75rem" }}
+            className="nav-desktop"
+            style={{ alignItems: "center", gap: "1.75rem" }}
           >
             {NAV_LINKS.map((link) => (
               <a
@@ -148,7 +148,7 @@ export function Navigation() {
 
           {/* Mobile toggle */}
           <button
-            className="flex md:hidden"
+            className="nav-mobile"
             onClick={() => setMobileOpen((v) => !v)}
             style={{
               background: "none",

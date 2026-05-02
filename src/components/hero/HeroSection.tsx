@@ -165,6 +165,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="hero-ctas"
           style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginBottom: "4rem" }}
         >
           <button

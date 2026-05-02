@@ -105,8 +105,8 @@ export function HireMeSection() {
   return (
     <section
       id="hire"
+      className="section-pad"
       style={{
-        padding: "8rem 0 6rem",
         borderTop: "1px solid var(--bg-border)",
         position: "relative",
         overflow: "hidden",
