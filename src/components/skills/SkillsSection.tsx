@@ -153,7 +153,7 @@ export function SkillsSection() {
           ))}
         </div>
 
-        {/* IEEE publication */}
+        {/* IEEE publication — expanded */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -161,75 +161,245 @@ export function SkillsSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           style={{
             marginTop: "3rem",
-            padding: "1.75rem 2rem",
             background: "var(--bg-surface)",
             border: "1px solid var(--bg-border)",
-            borderRadius: "16px",
+            borderRadius: "20px",
             position: "relative",
             overflow: "hidden",
-            display: "flex",
-            gap: "1.5rem",
-            alignItems: "flex-start",
           }}
         >
+          {/* Amber gradient accent bar */}
           <div
             style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              height: "2px",
-              background: "linear-gradient(90deg, var(--accent), var(--accent-warm))",
+              height: "3px",
+              background: "linear-gradient(90deg, #F59E0B, #EF4444, #8B5CF6)",
             }}
           />
-          <div
-            style={{
-              fontSize: "2rem",
-              flexShrink: 0,
-              width: "52px",
-              height: "52px",
-              background: "rgba(124,58,237,0.1)",
-              border: "1px solid rgba(124,58,237,0.2)",
-              borderRadius: "12px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            📖
-          </div>
-          <div>
-            <span
+
+          <div style={{ padding: "2rem 2.25rem" }}>
+            {/* Header row */}
+            <div style={{ display: "flex", gap: "1.25rem", alignItems: "flex-start", marginBottom: "1.5rem" }}>
+              <div
+                style={{
+                  fontSize: "2rem",
+                  flexShrink: 0,
+                  width: "56px",
+                  height: "56px",
+                  background: "rgba(245,158,11,0.1)",
+                  border: "1px solid rgba(245,158,11,0.2)",
+                  borderRadius: "14px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                📖
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexWrap: "wrap", marginBottom: "0.6rem" }}>
+                  <span
+                    style={{
+                      display: "inline-block",
+                      padding: "0.18rem 0.65rem",
+                      background: "rgba(245,158,11,0.1)",
+                      border: "1px solid rgba(245,158,11,0.25)",
+                      color: "#fbbf24",
+                      borderRadius: "50px",
+                      fontSize: "0.7rem",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.06em",
+                    }}
+                  >
+                    ⭐ IEEE Published
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "0.78rem",
+                      fontFamily: "var(--font-mono)",
+                      color: "var(--text-tertiary)",
+                    }}
+                  >
+                    October 2021
+                  </span>
+                </div>
+                <h4
+                  style={{
+                    fontWeight: 700,
+                    fontSize: "1.1rem",
+                    color: "var(--text-primary)",
+                    lineHeight: 1.35,
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  Demand Forecasting &amp; Route Optimization in Supply Chain Industry
+                </h4>
+                <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", lineHeight: 1.65, marginBottom: "1rem" }}>
+                  Designed and evaluated a hybrid ML pipeline that addresses two core supply-chain challenges simultaneously:
+                  predicting future product demand and finding cost-minimal delivery routes. The system applies
+                  <strong style={{ color: "var(--text-primary)" }}> ARIMA time-series modelling</strong> to historical order data
+                  for accurate demand forecasting, then feeds those forecasts into a
+                  <strong style={{ color: "var(--text-primary)" }}> Simulated Annealing</strong> meta-heuristic solver that
+                  iteratively refines routing plans — escaping local optima that greedy algorithms get trapped in.
+                  The combined approach significantly reduces both excess inventory costs and last-mile delivery overhead.
+                </p>
+                <a
+                  href="https://ieeexplore.ieee.org/document/9544942/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.4rem",
+                    padding: "0.45rem 1rem",
+                    background: "rgba(245,158,11,0.08)",
+                    border: "1px solid rgba(245,158,11,0.3)",
+                    borderRadius: "8px",
+                    color: "#fbbf24",
+                    textDecoration: "none",
+                    fontSize: "0.8rem",
+                    fontWeight: 600,
+                    transition: "background 0.2s, border-color 0.2s",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.background = "rgba(245,158,11,0.14)";
+                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(245,158,11,0.55)";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.background = "rgba(245,158,11,0.08)";
+                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(245,158,11,0.3)";
+                  }}
+                >
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  Read on IEEE Xplore
+                </a>
+              </div>
+            </div>
+
+            {/* Two-column detail: how it works + impact */}
+            <div
               style={{
-                display: "inline-block",
-                padding: "0.18rem 0.65rem",
-                background: "rgba(245,158,11,0.1)",
-                border: "1px solid rgba(245,158,11,0.25)",
-                color: "#fbbf24",
-                borderRadius: "50px",
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                textTransform: "uppercase",
-                letterSpacing: "0.06em",
-                marginBottom: "0.6rem",
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+                gap: "1rem",
+                marginBottom: "1.5rem",
               }}
             >
-              ⭐ IEEE Published · October 2021
-            </span>
-            <h4
+              {/* ARIMA card */}
+              <div
+                style={{
+                  padding: "1.25rem",
+                  background: "var(--bg-elevated)",
+                  border: "1px solid var(--bg-border)",
+                  borderRadius: "12px",
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", marginBottom: "0.75rem" }}>
+                  <span style={{ fontSize: "1.3rem" }}>📈</span>
+                  <span style={{ fontWeight: 700, fontSize: "0.9rem", color: "var(--text-primary)" }}>
+                    ARIMA Demand Forecasting
+                  </span>
+                </div>
+                <p style={{ fontSize: "0.8rem", color: "var(--text-secondary)", lineHeight: 1.6, marginBottom: "0.75rem" }}>
+                  AutoRegressive Integrated Moving Average (ARIMA) captures temporal patterns — seasonality, trends, and
+                  noise — in historical sales data. The model produces rolling forecasts that purchasing teams use to
+                  pre-position inventory, cutting stockouts and overstock alike.
+                </p>
+                <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap" }}>
+                  {["Time-series", "Seasonality", "Rolling forecast"].map((t) => (
+                    <span
+                      key={t}
+                      style={{
+                        padding: "0.2rem 0.55rem",
+                        background: "rgba(245,158,11,0.08)",
+                        border: "1px solid rgba(245,158,11,0.18)",
+                        borderRadius: "5px",
+                        fontSize: "0.72rem",
+                        fontFamily: "var(--font-mono)",
+                        color: "#fbbf24",
+                      }}
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Simulated Annealing card */}
+              <div
+                style={{
+                  padding: "1.25rem",
+                  background: "var(--bg-elevated)",
+                  border: "1px solid var(--bg-border)",
+                  borderRadius: "12px",
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", marginBottom: "0.75rem" }}>
+                  <span style={{ fontSize: "1.3rem" }}>🗺️</span>
+                  <span style={{ fontWeight: 700, fontSize: "0.9rem", color: "var(--text-primary)" }}>
+                    Simulated Annealing Routing
+                  </span>
+                </div>
+                <p style={{ fontSize: "0.8rem", color: "var(--text-secondary)", lineHeight: 1.6, marginBottom: "0.75rem" }}>
+                  Inspired by metal-cooling physics, SA probabilistically accepts worse solutions early on to explore
+                  the full solution space, then gradually focuses on optimisation — finding near-optimal multi-stop
+                  routes far faster than exact solvers for real-world fleet sizes.
+                </p>
+                <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap" }}>
+                  {["Meta-heuristic", "VRP", "Cost reduction"].map((t) => (
+                    <span
+                      key={t}
+                      style={{
+                        padding: "0.2rem 0.55rem",
+                        background: "rgba(139,92,246,0.08)",
+                        border: "1px solid rgba(139,92,246,0.2)",
+                        borderRadius: "5px",
+                        fontSize: "0.72rem",
+                        fontFamily: "var(--font-mono)",
+                        color: "var(--accent-light)",
+                      }}
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Impact metrics */}
+            <div
               style={{
-                fontWeight: 700,
-                fontSize: "1.05rem",
-                color: "var(--text-primary)",
-                marginBottom: "0.4rem",
+                display: "flex",
+                gap: "1rem",
+                flexWrap: "wrap",
+                padding: "1.1rem 1.25rem",
+                background: "rgba(245,158,11,0.04)",
+                border: "1px solid rgba(245,158,11,0.12)",
+                borderRadius: "10px",
               }}
             >
-              Demand Forecasting &amp; Route Optimization in Supply Chain Industry
-            </h4>
-            <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>
-              Applied ARIMA models and Simulated Annealing for ML-driven demand forecasting and
-              route optimization, improving forecast accuracy at scale.
-            </p>
+              {[
+                { label: "Forecast accuracy", value: "↑ Significant" },
+                { label: "Routing cost", value: "↓ Optimised" },
+                { label: "Technique", value: "ARIMA + SA" },
+                { label: "Published", value: "IEEE · 2021" },
+              ].map((m) => (
+                <div key={m.label} style={{ textAlign: "center", flex: "1 1 120px" }}>
+                  <div
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontWeight: 700,
+                      fontSize: "0.9rem",
+                      color: "#fbbf24",
+                      marginBottom: "0.2rem",
+                    }}
+                  >
+                    {m.value}
+                  </div>
+                  <div className="text-caption">{m.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>

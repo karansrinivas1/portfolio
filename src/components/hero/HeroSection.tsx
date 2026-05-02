@@ -2,7 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Mail } from "lucide-react";
+import { ArrowDown, ExternalLink, Github, Mail, Sparkles } from "lucide-react";
+
+const RESEARCH_PAPER_URL =
+  "https://ieeexplore.ieee.org/search/searchresult.jsp?queryText=Demand+Forecasting+Route+Optimization+Supply+Chain+Karan+Srinivas";
 
 const STATS = [
   { value: 3.8, suffix: "", label: "GPA · Northeastern", decimal: true },
@@ -65,11 +68,7 @@ function StatCounter({ value, suffix, label, decimal }: (typeof STATS)[0]) {
   );
 }
 
-interface HeroSectionProps {
-  onAIClick: () => void;
-}
-
-export function HeroSection({ onAIClick }: HeroSectionProps) {
+export function HeroSection() {
   const scrollToNext = () => {
     const el = document.getElementById("experience");
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -97,8 +96,8 @@ export function HeroSection({ onAIClick }: HeroSectionProps) {
             alignItems: "center",
             gap: "0.5rem",
             padding: "0.35rem 1rem",
-            background: "rgba(124,58,237,0.1)",
-            border: "1px solid rgba(124,58,237,0.25)",
+            background: "rgba(6,182,212,0.07)",
+            border: "1px solid rgba(6,182,212,0.22)",
             borderRadius: "50px",
             marginBottom: "2rem",
           }}
@@ -119,7 +118,7 @@ export function HeroSection({ onAIClick }: HeroSectionProps) {
             style={{
               fontSize: "0.8rem",
               fontWeight: 600,
-              color: "var(--accent-light)",
+              color: "var(--accent-cyan-light)",
               letterSpacing: "0.02em",
             }}
           >
@@ -256,38 +255,74 @@ export function HeroSection({ onAIClick }: HeroSectionProps) {
             GitHub
           </a>
 
-          <button
-            onClick={onAIClick}
+          <a
+            href="#hire"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById("hire")?.scrollIntoView({ behavior: "smooth" });
+            }}
             style={{
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",
               padding: "0.75rem 1.75rem",
-              background: "rgba(124,58,237,0.12)",
-              border: "1px solid rgba(124,58,237,0.3)",
+              background: "linear-gradient(135deg, rgba(124,58,237,0.2), rgba(6,182,212,0.15))",
+              border: "1px solid rgba(124,58,237,0.45)",
               borderRadius: "10px",
               color: "var(--accent-light)",
-              cursor: "pointer",
+              textDecoration: "none",
+              fontWeight: 700,
+              fontSize: "0.9375rem",
+              transition: "all 0.2s",
+              position: "relative",
+              overflow: "hidden",
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.background = "linear-gradient(135deg, rgba(124,58,237,0.35), rgba(6,182,212,0.22))";
+              (e.currentTarget as HTMLElement).style.borderColor = "rgba(124,58,237,0.7)";
+              (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.background = "linear-gradient(135deg, rgba(124,58,237,0.2), rgba(6,182,212,0.15))";
+              (e.currentTarget as HTMLElement).style.borderColor = "rgba(124,58,237,0.45)";
+              (e.currentTarget as HTMLElement).style.transform = "none";
+            }}
+          >
+            <Sparkles size={16} />
+            Hire Me
+          </a>
+
+          <a
+            href={RESEARCH_PAPER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              padding: "0.75rem 1.75rem",
+              background: "var(--glass-bg)",
+              border: "1px solid var(--glass-border)",
+              borderRadius: "10px",
+              color: "var(--text-secondary)",
+              textDecoration: "none",
               fontWeight: 600,
               fontSize: "0.9375rem",
-              transition: "background 0.2s",
+              transition: "border-color 0.2s, color 0.2s",
             }}
-            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.background = "rgba(124,58,237,0.22)")}
-            onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.background = "rgba(124,58,237,0.12)")}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.borderColor = "var(--accent)";
+              (e.currentTarget as HTMLElement).style.color = "var(--text-primary)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.borderColor = "var(--glass-border)";
+              (e.currentTarget as HTMLElement).style.color = "var(--text-secondary)";
+            }}
           >
-            ✦ Ask AI
-            <kbd
-              style={{
-                padding: "0.1rem 0.4rem",
-                background: "rgba(255,255,255,0.08)",
-                borderRadius: "4px",
-                fontSize: "0.7rem",
-                fontFamily: "var(--font-mono)",
-              }}
-            >
-              ⌘K
-            </kbd>
-          </button>
+            <ExternalLink size={16} />
+            IEEE Paper
+          </a>
+
         </motion.div>
 
         {/* Stats */}

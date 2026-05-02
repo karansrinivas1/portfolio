@@ -2,20 +2,17 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
-
-interface NavigationProps {
-  onAIClick: () => void;
-}
+import { Download, Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
+  { label: "Education", href: "#education" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
+  { label: "Hire Me", href: "#hire" },
 ];
 
-export function Navigation({ onAIClick }: NavigationProps) {
+export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -43,10 +40,12 @@ export function Navigation({ onAIClick }: NavigationProps) {
           left: 0,
           right: 0,
           zIndex: 100,
-          background: scrolled ? "rgba(10,10,10,0.95)" : "transparent",
-          borderBottom: scrolled ? "1px solid var(--bg-border)" : "1px solid transparent",
-          backdropFilter: scrolled ? "blur(20px)" : "none",
-          WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
+          background: scrolled ? "rgba(7,7,15,0.88)" : "transparent",
+          borderBottom: scrolled
+            ? "1px solid rgba(124,58,237,0.15)"
+            : "1px solid transparent",
+          backdropFilter: scrolled ? "blur(24px) saturate(180%)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(24px) saturate(180%)" : "none",
           transition: "background 0.3s, border-color 0.3s",
         }}
       >
@@ -62,7 +61,10 @@ export function Navigation({ onAIClick }: NavigationProps) {
           {/* Logo */}
           <a
             href="#"
-            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
             style={{
               fontWeight: 800,
               fontSize: "1.25rem",
@@ -75,14 +77,18 @@ export function Navigation({ onAIClick }: NavigationProps) {
           </a>
 
           {/* Desktop links */}
-          <div style={{ display: "flex", alignItems: "center", gap: "2rem" }}
+          <div
             className="hidden md:flex"
+            style={{ display: "flex", alignItems: "center", gap: "1.75rem" }}
           >
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(link.href);
+                }}
                 style={{
                   color: "var(--text-secondary)",
                   textDecoration: "none",
@@ -90,56 +96,57 @@ export function Navigation({ onAIClick }: NavigationProps) {
                   fontWeight: 500,
                   transition: "color 0.2s",
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-primary)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-secondary)")}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.color = "var(--text-primary)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.color = "var(--text-secondary)")
+                }
               >
                 {link.label}
               </a>
             ))}
 
-            {/* Ask AI button */}
-            <button
-              onClick={onAIClick}
+            {/* Resume page link */}
+            <a
+              href="/resume"
               style={{
-                display: "flex",
+                display: "inline-flex",
                 alignItems: "center",
-                gap: "0.5rem",
-                padding: "0.45rem 1rem",
-                background: "var(--glass-bg)",
-                border: "1px solid var(--glass-border)",
+                gap: "0.4rem",
+                padding: "0.42rem 1rem",
+                background: "linear-gradient(135deg,rgba(124,58,237,0.18),rgba(6,182,212,0.12))",
+                border: "1px solid rgba(124,58,237,0.35)",
                 borderRadius: "8px",
-                color: "var(--text-secondary)",
-                cursor: "pointer",
+                color: "var(--accent-light)",
+                textDecoration: "none",
                 fontSize: "0.8125rem",
-                fontWeight: 500,
-                transition: "border-color 0.2s, color 0.2s",
+                fontWeight: 600,
+                transition: "all 0.2s",
+                letterSpacing: "-0.01em",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "var(--accent)";
-                e.currentTarget.style.color = "var(--text-primary)";
+                (e.currentTarget as HTMLElement).style.background =
+                  "linear-gradient(135deg,rgba(124,58,237,0.3),rgba(6,182,212,0.18))";
+                (e.currentTarget as HTMLElement).style.borderColor =
+                  "rgba(124,58,237,0.6)";
+                (e.currentTarget as HTMLElement).style.transform =
+                  "translateY(-1px)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "var(--glass-border)";
-                e.currentTarget.style.color = "var(--text-secondary)";
+                (e.currentTarget as HTMLElement).style.background =
+                  "linear-gradient(135deg,rgba(124,58,237,0.18),rgba(6,182,212,0.12))";
+                (e.currentTarget as HTMLElement).style.borderColor =
+                  "rgba(124,58,237,0.35)";
+                (e.currentTarget as HTMLElement).style.transform = "none";
               }}
             >
-              Ask AI
-              <kbd
-                style={{
-                  padding: "0.1rem 0.4rem",
-                  background: "var(--bg-elevated)",
-                  borderRadius: "4px",
-                  fontSize: "0.7rem",
-                  fontFamily: "var(--font-mono)",
-                  color: "var(--text-tertiary)",
-                }}
-              >
-                ⌘K
-              </kbd>
-            </button>
+              <Download size={13} />
+              Resume
+            </a>
           </div>
 
-          {/* Mobile menu toggle */}
+          {/* Mobile toggle */}
           <button
             className="flex md:hidden"
             onClick={() => setMobileOpen((v) => !v)}
@@ -171,17 +178,23 @@ export function Navigation({ onAIClick }: NavigationProps) {
               left: 0,
               right: 0,
               zIndex: 99,
-              background: "rgba(10,10,10,0.98)",
+              background: "rgba(7,7,15,0.97)",
+              backdropFilter: "blur(24px)",
               borderBottom: "1px solid var(--bg-border)",
               padding: "1.5rem",
             }}
           >
-            <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+            <div
+              style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}
+            >
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(link.href);
+                  }}
                   style={{
                     color: "var(--text-secondary)",
                     textDecoration: "none",
@@ -192,25 +205,27 @@ export function Navigation({ onAIClick }: NavigationProps) {
                   {link.label}
                 </a>
               ))}
-              <button
-                onClick={() => { setMobileOpen(false); onAIClick(); }}
+              <a
+                href="/resume"
+                onClick={() => setMobileOpen(false)}
                 style={{
-                  display: "flex",
+                  display: "inline-flex",
                   alignItems: "center",
                   gap: "0.5rem",
-                  padding: "0.6rem 1rem",
-                  background: "var(--accent)",
+                  padding: "0.65rem 1.25rem",
+                  background: "linear-gradient(135deg,#7C3AED,#5B21B6)",
                   border: "none",
                   borderRadius: "8px",
                   color: "#fff",
-                  cursor: "pointer",
-                  fontSize: "0.875rem",
+                  textDecoration: "none",
+                  fontSize: "0.9rem",
                   fontWeight: 600,
                   width: "fit-content",
                 }}
               >
-                Ask AI Assistant
-              </button>
+                <Download size={15} />
+                View Resume
+              </a>
             </div>
           </motion.div>
         )}

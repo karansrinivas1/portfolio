@@ -2,33 +2,46 @@
 
 /* ============================================
    DESIGN SYSTEM — Karan Srinivas Portfolio
+   Aurora Dark — Navy × Violet × Cyan
    ============================================ */
 
 :root {
-  --bg-primary:   #0A0A0A;
-  --bg-surface:   #141414;
-  --bg-elevated:  #1E1E1E;
-  --bg-border:    #2A2A2A;
+  /* ---- Backgrounds ---- */
+  --bg-primary:    #07070F;
+  --bg-surface:    #0C0C1E;
+  --bg-elevated:   #131330;
+  --bg-border:     #1B1B3A;
 
-  --text-primary:   #F2F2F2;
-  --text-secondary: #A1A1AA;
-  --text-tertiary:  #52525B;
+  /* ---- Text ---- */
+  --text-primary:   #ECEEFF;
+  --text-secondary: #7E88B5;
+  --text-tertiary:  #383E66;
 
+  /* ---- Primary accent — Violet ---- */
   --accent:          #7C3AED;
   --accent-light:    #A78BFA;
-  --accent-lighter:  #C084FC;
-  --accent-glow:     rgba(167, 139, 250, 0.15);
-  --accent-gradient: linear-gradient(135deg, #7C3AED, #A78BFA, #C084FC);
+  --accent-lighter:  #C4B5FD;
+  --accent-glow:     rgba(124,58,237,0.28);
 
-  --accent-warm:       #E8845C;
-  --accent-warm-light: #F0A882;
-  --accent-warm-glow:  rgba(232, 132, 92, 0.15);
+  /* Violet → Indigo → Cyan gradient */
+  --accent-gradient: linear-gradient(135deg, #8B5CF6 0%, #3B82F6 50%, #06B6D4 100%);
 
-  --glass-bg:     rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.06);
+  /* ---- Secondary accent — Cyan ---- */
+  --accent-cyan:        #06B6D4;
+  --accent-cyan-light:  #67E8F9;
+  --accent-cyan-glow:   rgba(6,182,212,0.2);
 
+  /* ---- Warm accent — Amber ---- */
+  --accent-warm:       #F59E0B;
+  --accent-warm-light: #FCD34D;
+  --accent-warm-glow:  rgba(245,158,11,0.18);
+
+  /* ---- Glass ---- */
+  --glass-bg:     rgba(255,255,255,0.03);
+  --glass-border: rgba(255,255,255,0.07);
+
+  /* ---- Easing ---- */
   --ease-out-expo:   cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-out-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-spring:     cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -46,20 +59,28 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ---- Aurora background (fixed orbs via body pseudo-elements) ---- */
 body {
-  background: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-sans);
   overflow-x: hidden;
+  /* Navy base */
+  background-color: #07070F;
+  /* Aurora layer: violet top-left, cyan top-right, amber bottom-center */
+  background-image:
+    radial-gradient(ellipse 80% 70% at -5% -10%,  rgba(124,58,237,0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 60% at 105% 0%,   rgba(6,182,212,0.16)  0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 50%  105%,  rgba(245,158,11,0.07) 0%, transparent 60%);
+  background-attachment: fixed;
 }
 
 ::selection {
-  background: rgba(124, 58, 237, 0.25);
+  background: rgba(124,58,237,0.3);
   color: var(--text-primary);
 }
 
 *:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-cyan);
   outline-offset: 4px;
 }
 
@@ -69,7 +90,7 @@ body {
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.035;
+  opacity: 0.022;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 180px 180px;
@@ -111,7 +132,7 @@ body {
   color: var(--text-tertiary);
 }
 
-/* ---- Gradient text ---- */
+/* ---- Gradient text (violet → indigo → cyan) ---- */
 .gradient-text {
   background: var(--accent-gradient);
   -webkit-background-clip: text;
@@ -121,10 +142,10 @@ body {
 
 /* ---- Glass card ---- */
 .glass-card {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(12,12,30,0.65);
+  border: 1px solid rgba(255,255,255,0.07);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
 }
 
 /* ---- Section layout ---- */
@@ -137,14 +158,28 @@ body {
 /* ---- Scrollbar ---- */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg-primary); }
-::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--accent), var(--accent-cyan));
+  border-radius: 2px;
+}
 
-/* ---- Chat animations ---- */
+/* ---- Animations ---- */
 @keyframes cursor-blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
+
 @keyframes dot-pulse {
   0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
-  40% { opacity: 1; transform: scale(1); }
+  40%           { opacity: 1;   transform: scale(1); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+  50%       { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+}
+
+@keyframes ring-expand {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  100% { transform: scale(1.6); opacity: 0;   }
 }
